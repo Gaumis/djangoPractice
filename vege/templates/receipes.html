@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block start %}
+{{request.user}}
 <div class="container mt-5">
     <form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data">
         {% csrf_token %}
@@ -36,7 +37,10 @@
                 <td>{{receipe.receipe_name}}</td>
                 <td>{{receipe.receipe_description}}</td>
                 <td><img src="/media/{{receipe.receipe_image}}" style="height: 100px;"></td>
-                <td><a href="/delete-items/{{receipe.id}}" class="btn btn-danger">Delete</a></td>
+                <td><a href="/delete-items/{{receipe.id}}" class="btn btn-danger">Delete</a>
+                <br>
+                <a href="/update-items/{{receipe.id}}" class="btn btn-success mt-1">Update</a>
+                </td>
             </tr>
         </tbody>
         {% endfor %}
